@@ -11,8 +11,28 @@
 </head>
 
 <body>
-    <h1>Trivia Game!</h1>
-    <h2>Time Remaining:</h2>
+    <div id="start">Start Game!</div>
+    <div id="quiz" style="display : none;">
+        <div id="qImage"></div>
+        <div id="question">
+            <p>Question</p>
+        </div>
+        <div id="timer">
+            <div id="counter"></div>
+            <div id="btimeguage"></div>
+            <div id="timeguage"></div>
+        </div>
+        <div id="choices">
+            <div class="choice" id="A" onclick="checkAnswer('A')">A</div>
+            <div class="choice" id="B" onclick="checkAnswer('B')">B</div>
+            <div class="choice" id="C" onclick="checkAnswer('C')">C</div>
+        </div>
+        <div id="progress"> <div class="prog"></div>
+    </div>
+    <div id="scoreContainer" style="display : none;">
+        <p>###</p>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/app.js"></script>
 </body>

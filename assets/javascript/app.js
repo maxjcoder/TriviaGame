@@ -1,28 +1,21 @@
+const start = document.getElementById("start");
 
-var questions = [
-{ 
-    prompt: "What year did the original 'Psycho' get released?\n(a) 1960\n\ (b) 1992\n(c) 1984", 
-    answer: "a"
-},
-{
-    prompt: "Who is the actor who first played the villian: 'Freddy Krueger' in the: Nightmare on Elm Street franchise?\n(a) Brad Dourif\n\ (b) Kane Hodder\n(c) Robert Englund",
-    answer: "c"
-},
-{
-    prompt: "Which istallment of the Friday the 13th series introduced us to Jason Vorhees' infamous hockey mask?\n(a) Part VIII: Jason Takes Manhattan\n\ (b) Part III: 3D\n(c) Part V: A New Blood",
-    answer: "b"
-},
-]
+const quiz = document.getElementById("quiz");
 
-var score = 0;
+const qImg = document.getElementById("questionImage");
 
-for(var i=0; i < questions.length; i++) {
-    var response = window.prompt(questions[i].prompt);
-    if(response == questions [i].answer){
-        score++;
-        alert("Correct!");
-    } else {
-        alert("INCORRECT!");
-    }
-}
-alert("you got " + score + "/" + questions.length);
+const question = document.getElementById("question");
+
+const counter = document.getElementById("counter");
+
+const timeGuage = document.getElementById("timeGuage");
+
+const choiceA = document.getElementById("A");
+const choiceB = document.getElementById("B");
+const choiceC = document.getElementById("C");
+
+const progress = document.getElementById("progress");
+    
+const scoreContainer = document.getElementById("ScoreContainer");
+
+
