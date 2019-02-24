@@ -72,5 +72,48 @@ var questions = [
             progress.innerHTML += "<div   id=" + qIndex + "></div>";
             }
         }
+        function answerIsCorrect(){
+            document.getElementById(runningQuestionIndex).style.backgroundColor = "green"
+        }
+        function answerIsWrong(){
+            document.getElementById(runningQuestionIndex).style.backgroundColor = "red"
+        }
 
+const questionTime = 10; //10 sec for each question
+const guageWidth = 150; //150 pixel width
 
+var count = 0;
+
+const guageProgressUnit = guageWidth/questionTime;
+
+        function counterRender(){
+            if(count <= questionTime){
+                counter.innerHTML = count;
+                timeGuage.style.width = guageProgressUnit * count+ "px"; count++;
+            }
+            else{
+                count = 0;
+                answerIsWrong();
+                if(runningQuestionIndex < lastQuestionIndex){
+                    runningQuestionIndex++;
+                    questionRender();
+                }
+                else{ 
+                    clearInterval(TIMER);
+                    scoreRender();
+                }
+            }
+        }
+
+var TIMER = setInterval(counterRender,1000); 
+            clearInterval(TIMER);
+
+var score = 0;
+
+        function checkAnswer(answer){
+            if(questions[runningQuestionIndex].correct == answer){
+                score++;
+            }else{
+
+            }
+        }
