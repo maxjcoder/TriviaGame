@@ -1,30 +1,24 @@
+// select all elements
 const start = document.getElementById("start");
-
 const quiz = document.getElementById("quiz");
-
-const qImg = document.getElementById("questionImage");
-
 const question = document.getElementById("question");
-
-const counter = document.getElementById("counter");
-
-const timeGuage = document.getElementById("timeGuage");
-
+const qImg = document.getElementById("qImg");
 const choiceA = document.getElementById("A");
 const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
-
+const counter = document.getElementById("counter");
+const timeGauge = document.getElementById("timeGauge");
 const progress = document.getElementById("progress");
+const scoreDiv = document.getElementById("scoreContainer");
 
-const scoreContainer = document.getElementById("ScoreContainer");
-
+// create our questions
 var questions = [
     {
         question : "In what year did the original 'Psycho' get released in theaters?",
-        imgSrc : "###",
+        imgSrc : "score.png",
         choiceA : "1960",
         choiceB : "1998",
-        ChoiceC : "1972",
+        choiceC : "1972",
         correct : "A"
     },
     {
@@ -32,7 +26,7 @@ var questions = [
         imgSrc : "###",
         choiceA : "Brad Dourif",
         choiceB : "Kane Hodder",
-        ChoiceC : "Robert Englund",
+        choiceC : "Robert Englund",
         correct : "C"
     }, 
     {
@@ -43,77 +37,119 @@ var questions = [
         choiceC : "Part V: A New Blood",
         correct : "B"
     }, 
-        questions[0].question,
-        questions[0].imgSrc,
-        questions[0].choiceA,
-        questions[0].choiceB,
-        questions[0].choiceC,
-        questions[0].correct,
 ];
-        var runningQuestionIndex = 0;
 
-        function renderQuestion(){
-            var q = questions[runningQuestionIndex];
-            qImg.innerHTML = "<img src=" + q.imgSrc + ">";
-            question.innerHTML = "<p>" +q.question+ "</p>";
-            choiceA.innerHTML = q.choiceA;
-            choiceB.innerHTML = q.choiceB;
-            choiceC.innerHTML = q.choiceC;
-        }
+// create some variables
 
-        runningQuestionIndex = 0;
-        renderQuestion()
+const lastQuestion = questions.length - 1;
+let runningQuestion = 0;
+let count = 0;
+const questionTime = 10; // 10s
+const gaugeWidth = 150; // 150px
+const gaugeUnit = gaugeWidth / questionTime;
+let TIMER;
+let score = 0;
 
-        runningQuestionIndex++
-        renderQuestion()
+// render a question
+function renderQuestion(){
+    let q = questions[runningQuestion];
+    
+    question.innerHTML = "<p>"+ q.question +"</p>";
+    qImg.innerHTML = "<img src="+ q.imgSrc +">";
+    choiceA.innerHTML = q.choiceA;
+    choiceB.innerHTML = q.choiceB;
+    choiceC.innerHTML = q.choiceC;
+}
 
-        function progressRender(){
-            for(var qIndex = 0; qIndex <= lastQuestionIndex; qIndex++){
-            progress.innerHTML += "<div   id=" + qIndex + "></div>";
-            }
-        }
-        function answerIsCorrect(){
-            document.getElementById(runningQuestionIndex).style.backgroundColor = "green"
-        }
-        function answerIsWrong(){
-            document.getElementById(runningQuestionIndex).style.backgroundColor = "red"
-        }
+start.addEventListener("click",startQuiz);
 
-const questionTime = 10; //10 sec for each question
-const guageWidth = 150; //150 pixel width
+// start quiz
+function startQuiz(){
+    start.style.display = "none";
+    renderQuestion();
+    quiz.style.display = "block";
+    renderProgress();
+    renderCounter();
+    TIMER = setInterval(renderCounter,1000); // 1000ms = 1s
+}
 
-var count = 0;
+// render progress
+function renderProgress(){
+    for(let qIndex = 0; qIndex <= lastQuestion; qIndex++){
+        progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
+    }
+}
 
-const guageProgressUnit = guageWidth/questionTime;
+// counter render
 
-        function counterRender(){
-            if(count <= questionTime){
-                counter.innerHTML = count;
-                timeGuage.style.width = guageProgressUnit * count+ "px"; count++;
-            }
-            else{
-                count = 0;
-                answerIsWrong();
-                if(runningQuestionIndex < lastQuestionIndex){
-                    runningQuestionIndex++;
-                    questionRender();
-                }
-                else{ 
-                    clearInterval(TIMER);
-                    scoreRender();
-                }
-            }
-        }
-
-var TIMER = setInterval(counterRender,1000); 
+function renderCounter(){
+    if(count <= questionTime){
+        counter.innerHTML = count;
+        timeGauge.style.width = count * gaugeUnit + "px";
+        count++
+    }else{
+        count = 0;
+        // change progress color to red
+        answerIsWrong();
+        if(runningQuestion < lastQuestion){
+            runningQuestion++;
+            renderQuestion();
+        }else{
+            // end the quiz and show the score
             clearInterval(TIMER);
-
-var score = 0;
-
-        function checkAnswer(answer){
-            if(questions[runningQuestionIndex].correct == answer){
-                score++;
-            }else{
-
-            }
+            scoreRender();
         }
+    }
+}
+
+// checkAnwer
+
+function checkAnswer(answer){
+    if( answer == questions[runningQuestion].correct){
+        // answer is correct
+        score++;
+        // change progress color to green
+        answerIsCorrect();
+    }else{
+        // answer is wrong
+        // change progress color to red
+        answerIsWrong();
+    }
+    count = 0;
+    if(runningQuestion < lastQuestion){
+        runningQuestion++;
+        renderQuestion();
+    }else{
+        // end the quiz and show the score
+        clearInterval(TIMER);
+        scoreRender();
+    }
+}
+
+// answer is correct
+function answerIsCorrect(){
+    document.getElementById(runningQuestion).style.backgroundColor = "#0f0";
+}
+
+// answer is Wrong
+function answerIsWrong(){
+    document.getElementById(runningQuestion).style.backgroundColor = "#f00";
+}
+
+// score render
+function scoreRender(){
+    scoreDiv.style.display = "block";
+    
+    // calculate the amount of question percent answered by the user
+    const scorePerCent = Math.round(100 * score/questions.length);
+    
+    // choose the image based on the scorePerCent
+    let img = (scorePerCent >= 80) ? "images/5.png" :
+              (scorePerCent >= 60) ? "images/4.png" :
+              (scorePerCent >= 40) ? "images/3.png" :
+              (scorePerCent >= 20) ? "images/2.png" :
+              "images/1.png";
+    
+    scoreDiv.innerHTML = "<img src="+ img +">";
+    scoreDiv.innerHTML += "<p>"+ scorePerCent +"%</p>";
+}
