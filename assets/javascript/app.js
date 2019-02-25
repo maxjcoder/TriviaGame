@@ -1,4 +1,4 @@
-// select all elements
+// elements
 const start = document.getElementById("start");
 const quiz = document.getElementById("quiz");
 const question = document.getElementById("question");
@@ -11,7 +11,7 @@ const timeGauge = document.getElementById("timeGauge");
 const progress = document.getElementById("progress");
 const scoreDiv = document.getElementById("scoreContainer");
 
-// create our questions
+// questions
 var questions = [
     {
         question : "When was the original 'Psycho' released in theaters?",
@@ -42,13 +42,6 @@ var questions = [
         choiceC : "Cabbage Patch",
         correct : "B"
     }, {
-        question : "In 'Serial Mom', Beverly killed Ms. Jensen with _____.",
-        imgSrc : "assets/images/beverly.jpg",
-        choiceA : "a leg of lamb",
-        choiceB : "a Fabergé egg",
-        choiceC : "a fire poker",
-        correct : "A"
-    }, {
         question : "'Scream' is basically_____.",
         imgSrc : "assets/images/scream.jpg",
         choiceA : "a postmodern satire of '80s slasher flicks",
@@ -78,15 +71,22 @@ var questions = [
         correct : "C"
     }, {
         question : "'Room ____' is the most terrifying room in the Overlook Hotel in 'The Shining' (1980).",
-        imgSrc : "assets/images/poltergeist.jpeg",
+        imgSrc : "assets/images/shining.jpg",
         choiceA : "1987",
         choiceB : "237",
         choiceC : "1632",
         correct : "B"
+    },{
+        question : "In 'Serial Mom', Beverly killed Ms. Jensen with _____.",
+        imgSrc : "assets/images/beverly.jpg",
+        choiceA : "a leg of lamb",
+        choiceB : "a Fabergé egg",
+        choiceC : "a fire poker",
+        correct : "A"
     },
 ];
 
-// create some variables
+// variables and timer length
 
 const lastQuestion = questions.length - 1;
 let runningQuestion = 0;
@@ -97,7 +97,7 @@ const gaugeUnit = gaugeWidth / questionTime;
 let TIMER;
 let score = 0;
 
-// render a question
+// display questions
 function renderQuestion(){
     let q = questions[runningQuestion];
     
@@ -110,7 +110,7 @@ function renderQuestion(){
 
 start.addEventListener("click",startQuiz);
 
-// start quiz
+// begin quiz
 function startQuiz(){
     start.style.display = "none";
     renderQuestion();
@@ -120,14 +120,14 @@ function startQuiz(){
     TIMER = setInterval(renderCounter,1000); // 1000ms = 1s
 }
 
-// render progress
+// show progress
 function renderProgress(){
     for(let qIndex = 0; qIndex <= lastQuestion; qIndex++){
         progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
     }
 }
 
-// counter render
+// show counter
 
 function renderCounter(){
     if(count <= questionTime){
@@ -136,7 +136,7 @@ function renderCounter(){
         count++
     }else{
         count = 0;
-        // change progress color to red
+        // change progress color, red
         answerIsWrong();
         if(runningQuestion < lastQuestion){
             runningQuestion++;
@@ -149,17 +149,17 @@ function renderCounter(){
     }
 }
 
-// checkAnwer
+// check answer
 
 function checkAnswer(answer){
     if( answer == questions[runningQuestion].correct){
         // answer is correct
         score++;
-        // change progress color to green
+        // change color, green
         answerIsCorrect();
     }else{
         // answer is wrong
-        // change progress color to red
+        // change color to red
         answerIsWrong();
     }
     count = 0;
@@ -167,7 +167,7 @@ function checkAnswer(answer){
         runningQuestion++;
         renderQuestion();
     }else{
-        // end the quiz and show the score
+        // end the quiz, show the score
         clearInterval(TIMER);
         scoreRender();
     }
@@ -183,14 +183,14 @@ function answerIsWrong(){
     document.getElementById(runningQuestion).style.backgroundColor = "#f00";
 }
 
-// score render
+// show score
 function scoreRender(){
     scoreDiv.style.display = "block";
     
-    // calculate the amount of question percent answered by the user
+    // calculate percentage of questions answered by player
     const scorePerCent = Math.round(100 * score/questions.length);
     
-    // choose the image based on the scorePerCent
+    // show a grade image based on the score percentage
     var img = (scorePerCent >= 80) ? "assets/images/5.png" :
               (scorePerCent >= 60) ? "assets/images/4.png" :
               (scorePerCent >= 40) ? "assets/images/3.png" :
