@@ -1,17 +1,27 @@
 // elements
+
 const start = document.getElementById("start");
+
 const quiz = document.getElementById("quiz");
+
 const question = document.getElementById("question");
+
 const qImg = document.getElementById("qImg");
+
 const choiceA = document.getElementById("A");
 const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
+
 const counter = document.getElementById("counter");
+
 const timeGauge = document.getElementById("timeGauge");
+
 const progress = document.getElementById("progress");
+
 const scoreDiv = document.getElementById("scoreContainer");
 
-// questions
+// spooky questions
+
 var questions = [
     {
         question : "When was the original 'Psycho' released in theaters?",
@@ -83,6 +93,13 @@ var questions = [
         choiceB : "a Fabergé egg",
         choiceC : "a fire poker",
         correct : "A"
+    },{
+        question : "It could be the most dangerous projectile, and you may have had it for lunch ('...ahem, Regan!'). Is it____?",
+        imgSrc : "assets/images/exorcist.gif",
+        choiceA : "spinach & artichoke dip",
+        choiceB : "lime Jello",
+        choiceC : "pea soup",
+        correct : "C"
     },
 ];
 
@@ -91,13 +108,14 @@ var questions = [
 const lastQuestion = questions.length - 1;
 let runningQuestion = 0;
 let count = 0;
-const questionTime = 15; // 10s
+const questionTime = 15; // 15s for some longer questions 
 const gaugeWidth = 150; // 150px
 const gaugeUnit = gaugeWidth / questionTime;
 let TIMER;
 let score = 0;
 
 // display questions
+
 function renderQuestion(){
     let q = questions[runningQuestion];
     
@@ -111,6 +129,7 @@ function renderQuestion(){
 start.addEventListener("click",startQuiz);
 
 // begin quiz
+
 function startQuiz(){
     start.style.display = "none";
     renderQuestion();
@@ -121,6 +140,7 @@ function startQuiz(){
 }
 
 // show progress
+
 function renderProgress(){
     for(let qIndex = 0; qIndex <= lastQuestion; qIndex++){
         progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
@@ -134,14 +154,16 @@ function renderCounter(){
         counter.innerHTML = count;
         timeGauge.style.width = count * gaugeUnit + "px";
         count++
-    }else{
+    }
+    else{
         count = 0;
         // change progress color, red
         answerIsWrong();
         if(runningQuestion < lastQuestion){
             runningQuestion++;
             renderQuestion();
-        }else{
+        }
+        else{
             // end the quiz and show the score
             clearInterval(TIMER);
             scoreRender();
@@ -153,20 +175,25 @@ function renderCounter(){
 
 function checkAnswer(answer){
     if( answer == questions[runningQuestion].correct){
+
         // answer is correct
         score++;
+
         // change color, green
         answerIsCorrect();
-    }else{
+    }
+    else{
         // answer is wrong
         // change color to red
+
         answerIsWrong();
     }
     count = 0;
     if(runningQuestion < lastQuestion){
         runningQuestion++;
         renderQuestion();
-    }else{
+    }
+    else{
         // end the quiz, show the score
         clearInterval(TIMER);
         scoreRender();
@@ -174,23 +201,28 @@ function checkAnswer(answer){
 }
 
 // answer is correct
+
 function answerIsCorrect(){
     document.getElementById(runningQuestion).style.backgroundColor = "#0f0";
 }
 
 // answer is Wrong
+
 function answerIsWrong(){
     document.getElementById(runningQuestion).style.backgroundColor = "#f00";
 }
 
 // show score
+
 function scoreRender(){
     scoreDiv.style.display = "block";
     
     // calculate percentage of questions answered by player
+
     const scorePerCent = Math.round(100 * score/questions.length);
     
-    // show a grade image based on the score percentage
+    // show a grade image based on the score percentage, (Ternary Operator, thank you W3Schools!), lets grade this bitch
+
     var img = (scorePerCent >= 80) ? "assets/images/5.png" :
               (scorePerCent >= 60) ? "assets/images/4.png" :
               (scorePerCent >= 40) ? "assets/images/3.png" :

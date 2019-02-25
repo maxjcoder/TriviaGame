@@ -3,14 +3,13 @@ body{
     font-family: monospace;
     background-image: url("../images/imaginationland.jpg");
 }
-
 #container{
     margin : 20px auto;
     background-color: white;
     height: 300px;
     width : 700px;
     border-radius: 5px;
-    box-shadow: 0px 5px 15px 0px;
+    box-shadow: 0px 15px 15px 0px;
     position: relative;
 }
 #start{
@@ -31,7 +30,6 @@ body{
     border: 3px solid lightseagreen;
     color : lightseagreen;
 }
-
 #qImg{
     width : 200px;
     height : 200px;
@@ -44,7 +42,6 @@ body{
     height : 200px;
     border-top-left-radius: 5px;
 }
-
 #question{
     width:500px;
     height : 125px;
@@ -57,7 +54,6 @@ body{
     padding : 15px;
     font-size: 1.25em;
 }
-
 #choices{
     width : 480px;
     position: absolute;
@@ -78,7 +74,6 @@ body{
     border : 2px solid grey;
     font-weight: bold;
 }
-
 #timer{
     position: absolute;
     height : 100px;
@@ -148,19 +143,24 @@ body{
     font-weight: bold;
     text-align: center;
 }
-.footer {
-    border: 2px solid silver;
+.footer{
+    border: 2px solid lightgrey;
     margin-top: 218px;
+    margin-bottom: 2px;
     padding: 10px;
     text-align: center;
     background-color: black;
-    color: white;
+    color: lightgrey;
 }
-
-.portfolio {
-    background-color:lightgrey;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 15px; 
-    color: white;
+.portfolio{
+    background-color:white;
+    font-family: monospace;
+    font-size: 1em;
+    font-weight: bolder;
+    color: lightgrey;
     padding: 10px;
+}
+.portfolio:hover{
+    border: 3px solid lightseagreen;
+    color : lightseagreen;
 }
