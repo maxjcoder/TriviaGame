@@ -35,7 +35,7 @@ var questions = [
         choiceC : "Part V: A New Blood",
         correct : "B"
     }, {
-        question : "In 'Child's Play', what's the toy line that made the 'Chucky' dolls?",
+        question : "In the fiml 'Child's Play', name the toy line that made the 'Chucky' dolls?",
         imgSrc : "assets/images/chucky.jpg",
         choiceA : "My Buddy",
         choiceB : "Good Guys",
@@ -46,7 +46,7 @@ var questions = [
         imgSrc : "assets/images/scream.jpg",
         choiceA : "a postmodern satire of '80s slasher flicks",
         choiceB : "a film that stars '90s heartthrobs, directed by Wes Craven",
-        choiceC : "a & b (all of the above)",
+        choiceC : "both answers are correct!",
         correct : "C"
     }, {
         question : "This 1922 film introduced the vampire to the big screen.",
