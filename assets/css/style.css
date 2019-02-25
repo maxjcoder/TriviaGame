@@ -94,7 +94,7 @@ body{
 #timeGauge{
     height : 10px;
     border-radius: 10px;
-    background-color: mediumseagreen;
+    background-color: red;
     margin-top : -10px;
     margin-left : 25px;
 }
@@ -145,7 +145,7 @@ body{
 }
 .footer{
     border: 2px solid lightgrey;
-    margin-top: 218px;
+    margin-top: 237px;
     margin-bottom: 2px;
     padding: 10px;
     text-align: center;
