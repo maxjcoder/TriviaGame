@@ -86,14 +86,28 @@ var questions = [
         choiceB : "237",
         choiceC : "1632",
         correct : "B"
-    },{
+    }, {
         question : "In 'Serial Mom', Beverly killed Ms. Jensen with _____.",
         imgSrc : "assets/images/beverly.jpg",
         choiceA : "a leg of lamb",
         choiceB : "a Fabergé egg",
         choiceC : "a fire poker",
         correct : "A"
-    },{
+    }, {
+        question : "In the 'Terminator' series, when is Judgement Day?",
+        imgSrc : "assets/images/t2.jpg",
+        choiceA : "November 14, 2003",
+        choiceB : "August 29, 1997 ",
+        choiceC : "May 12, 1984",
+        correct : "B"
+    }, {
+        question : "This actress first played the telekinetic lead role in Stephen King's 'Carrie'.",
+        imgSrc : "assets/images/dirtypillows.jpg",
+        choiceA : "Sissy Spacek",
+        choiceB : "Lindsay Lohan",
+        choiceC : "Emma Stone",
+        correct : "A"
+    }, {
         question : "It could be the most dangerous projectile, and you may have had it for lunch ('...ahem, Regan!'). Is it____?",
         imgSrc : "assets/images/exorcist.gif",
         choiceA : "spinach & artichoke dip",
