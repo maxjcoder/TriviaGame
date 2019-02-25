@@ -14,28 +14,40 @@ const scoreDiv = document.getElementById("scoreContainer");
 // create our questions
 var questions = [
     {
-        question : "In what year did the original 'Psycho' get released in theaters?",
-        imgSrc : "score.png",
+        question : "When was the original 'Psycho' released in theaters?",
+        imgSrc : "assets/images/psycho.jpeg",
         choiceA : "1960",
         choiceB : "1998",
         choiceC : "1972",
         correct : "A"
-    },
-    {
-        question : "Who is the actor who first played the villian: 'Freddy Krueger' in the: Nightmare on Elm Street franchise?",
-        imgSrc : "###",
+    }, {
+        question : "Who first played 'Freddy Krueger' in 'A Nightmare on Elm Street'?",
+        imgSrc : "assets/images/nightmare.jpg",
         choiceA : "Brad Dourif",
         choiceB : "Kane Hodder",
         choiceC : "Robert Englund",
         correct : "C"
-    }, 
-    {
-        question : "Which istallment of the Friday the 13th series introduced us to Jason Vorhees' infamous hockey mask?",
-        imgSrc : "###",
+    }, {
+        question : "Which 'Friday the 13th' film introduced Jason Vorhees' iconic hockey mask?",
+        imgSrc : "assets/images/jason.jpg",
         choiceA : "Part VIII: Jason Takes Manhattan",
         choiceB : "Part III: 3D",
         choiceC : "Part V: A New Blood",
         correct : "B"
+    }, {
+        question : "In 'Child's Play', what's the name of the toy line that made the 'Chucky' dolls?",
+        imgSrc : "assets/images/chucky.jpg",
+        choiceA : "My Buddy",
+        choiceB : "Good Guys",
+        choiceC : "Cabbage Patch",
+        correct : "B"
+    }, {
+        question : "In 'Serial Mom', Beverly killed Ms. Jensen with _____.",
+        imgSrc : "assets/images/beverly.jpg",
+        choiceA : "a fire poker",
+        choiceB : "a Fabergé egg",
+        choiceC : "a leg of lamb",
+        correct : "C"
     }, 
 ];
 
@@ -144,11 +156,11 @@ function scoreRender(){
     const scorePerCent = Math.round(100 * score/questions.length);
     
     // choose the image based on the scorePerCent
-    let img = (scorePerCent >= 80) ? "images/5.png" :
-              (scorePerCent >= 60) ? "images/4.png" :
-              (scorePerCent >= 40) ? "images/3.png" :
-              (scorePerCent >= 20) ? "images/2.png" :
-              "images/1.png";
+    var img = (scorePerCent >= 80) ? "assets/images/5.png" :
+              (scorePerCent >= 60) ? "assets/images/4.png" :
+              (scorePerCent >= 40) ? "assets/images/3.png" :
+              (scorePerCent >= 20) ? "assets/images/2.png" :
+              "assets/images/1.png";
     
     scoreDiv.innerHTML = "<img src="+ img +">";
     scoreDiv.innerHTML += "<p>"+ scorePerCent +"%</p>";
