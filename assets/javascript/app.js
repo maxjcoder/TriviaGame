@@ -35,7 +35,7 @@ var questions = [
         choiceC : "Part V: A New Blood",
         correct : "B"
     }, {
-        question : "In the fiml 'Child's Play', name the toy line that made the 'Chucky' dolls?",
+        question : "In the film 'Child's Play', what brand of doll is 'Chucky'?",
         imgSrc : "assets/images/chucky.jpg",
         choiceA : "My Buddy",
         choiceB : "Good Guys",
