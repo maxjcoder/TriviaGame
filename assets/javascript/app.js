@@ -35,7 +35,7 @@ var questions = [
         choiceC : "Part V: A New Blood",
         correct : "B"
     }, {
-        question : "In 'Child's Play', what's the name of the toy line that made the 'Chucky' dolls?",
+        question : "In 'Child's Play', what's the toy line that made the 'Chucky' dolls?",
         imgSrc : "assets/images/chucky.jpg",
         choiceA : "My Buddy",
         choiceB : "Good Guys",
@@ -44,11 +44,46 @@ var questions = [
     }, {
         question : "In 'Serial Mom', Beverly killed Ms. Jensen with _____.",
         imgSrc : "assets/images/beverly.jpg",
-        choiceA : "a fire poker",
+        choiceA : "a leg of lamb",
         choiceB : "a Fabergé egg",
-        choiceC : "a leg of lamb",
+        choiceC : "a fire poker",
+        correct : "A"
+    }, {
+        question : "'Scream' is basically_____.",
+        imgSrc : "assets/images/scream.jpg",
+        choiceA : "a postmodern satire of '80s slasher flicks",
+        choiceB : "a film that stars '90s heartthrobs, directed by Wes Craven",
+        choiceC : "a & b (all of the above)",
         correct : "C"
-    }, 
+    }, {
+        question : "This 1922 film introduced the vampire to the big screen.",
+        imgSrc : "assets/images/vampire.jpg",
+        choiceA : "The Cabinet of Dr. Caligari",
+        choiceB : "Nosferatu",
+        choiceC : "Dracula",
+        correct : "B"
+    }, {
+        question : "Which 'Halloween' film had nothing to do with the Micahel Meyers saga.",
+        imgSrc : "assets/images/pumpkin.jpg",
+        choiceA : "Halloween 3: Season of the Witch",
+        choiceB : "Halloween H20",
+        choiceC : "Halloween Resurrection",
+        correct : "A"
+    }, {
+        question : "(The 'Poltergeist' Curse) centers on the deaths of two young cast members, ___ & ___, during the 6 years between the releases of the 1st & 3rd films.",
+        imgSrc : "assets/images/poltergeist.jpeg",
+        choiceA : "River Phoenix, Brandon Lee",
+        choiceB : "Brittany Murphy, Gilda Radner",
+        choiceC : "Heather O'Rourke, Dominique Dunne",
+        correct : "C"
+    }, {
+        question : "'Room ____' is the most terrifying room in the Overlook Hotel in 'The Shining' (1980).",
+        imgSrc : "assets/images/poltergeist.jpeg",
+        choiceA : "1987",
+        choiceB : "237",
+        choiceC : "1632",
+        correct : "B"
+    },
 ];
 
 // create some variables
@@ -56,7 +91,7 @@ var questions = [
 const lastQuestion = questions.length - 1;
 let runningQuestion = 0;
 let count = 0;
-const questionTime = 10; // 10s
+const questionTime = 15; // 10s
 const gaugeWidth = 150; // 150px
 const gaugeUnit = gaugeWidth / questionTime;
 let TIMER;
