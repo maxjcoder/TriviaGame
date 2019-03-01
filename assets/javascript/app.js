@@ -20,7 +20,7 @@ const progress = document.getElementById("progress");
 
 const scoreDiv = document.getElementById("scoreContainer");
 
-// spooky questions
+// 13 spooky questions
 
 var questions = [
     {
@@ -31,7 +31,7 @@ var questions = [
         choiceC : "1972",
         correct : "A"
     }, {
-        question : "Who first played 'Freddy Krueger' in 'A Nightmare on Elm Street'?",
+        question : "Who first played Freddy Krueger in 'A Nightmare on Elm Street'?",
         imgSrc : "assets/images/nightmare.jpg",
         choiceA : "Brad Dourif",
         choiceB : "Kane Hodder",
@@ -45,7 +45,7 @@ var questions = [
         choiceC : "Part V: A New Blood",
         correct : "B"
     }, {
-        question : "In the film 'Child's Play', what brand of doll is 'Chucky'?",
+        question : "In the film 'Child's Play', what brand of doll is Chucky?",
         imgSrc : "assets/images/chucky.jpg",
         choiceA : "My Buddy",
         choiceB : "Good Guys",
@@ -80,7 +80,7 @@ var questions = [
         choiceC : "Heather O'Rourke, Dominique Dunne",
         correct : "C"
     }, {
-        question : "'Room ____' is the most terrifying room in the Overlook Hotel in 'The Shining' (1980).",
+        question : "Room _____ is the most terrifying room in the Overlook Hotel in 'The Shining' (1980).",
         imgSrc : "assets/images/shining.jpg",
         choiceA : "1987",
         choiceB : "237",
@@ -120,18 +120,18 @@ var questions = [
 // variables and timer length
 
 const lastQuestion = questions.length - 1;
-let runningQuestion = 0;
-let count = 0;
-const questionTime = 15; // 15s for some longer questions 
+var runningQuestion = 0;
+var count = 0;
+const questionTime = 15; // 15s (for some longer questions)
 const gaugeWidth = 150; // 150px
 const gaugeUnit = gaugeWidth / questionTime;
-let TIMER;
-let score = 0;
+var TIMER;
+var score = 0;
 
 // display questions
 
 function renderQuestion(){
-    let q = questions[runningQuestion];
+    var q = questions[runningQuestion];
     
     question.innerHTML = "<p>"+ q.question +"</p>";
     qImg.innerHTML = "<img src="+ q.imgSrc +">";
@@ -156,7 +156,7 @@ function startQuiz(){
 // show progress
 
 function renderProgress(){
-    for(let qIndex = 0; qIndex <= lastQuestion; qIndex++){
+    for(var qIndex = 0; qIndex <= lastQuestion; qIndex++){
         progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
     }
 }
@@ -235,7 +235,7 @@ function scoreRender(){
 
     const scorePerCent = Math.round(100 * score/questions.length);
     
-    // show a grade image based on the score percentage, (Ternary Operator, thank you W3Schools!), lets grade this bitch
+    // show a grade image based on the score percentage, (Ternary Operator, thank you W3Schools!), let's grade this bitch
 
     var img = (scorePerCent >= 80) ? "assets/images/5.png" :
               (scorePerCent >= 60) ? "assets/images/4.png" :
